@@ -1,3 +1,6 @@
+'''
+A project to test out github actions.
+'''
 
 
 if __name__ == '__main__':
