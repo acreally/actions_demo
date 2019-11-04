@@ -6,7 +6,5 @@ jobs:
     name: "Lint check"
     runs-on: ubuntu-latest
     steps:
-      - name: "checkout"
-        uses: actions/checkout@v1
       - name: "run linter"
         uses: acreally/pylint-action@master
