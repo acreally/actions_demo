@@ -8,5 +8,6 @@ jobs:
     steps:
       - name: "checkout"
         uses: actions/checkout@v1
-      - name: "run linter"
+      - name: "lint check"
         uses: acreally/pylint-action@master
+      - name: "unit test"
