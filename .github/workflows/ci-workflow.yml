@@ -1,0 +1,11 @@
+name: Test
+on: [push]
+
+jobs:
+  lint:
+    name: "Lint check"
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Lint check"
+        uses: actions/checkout@v1
+        run: pylint -f parseable -d I0011,R0801 src
