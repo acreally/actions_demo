@@ -1,10 +1,12 @@
-name: Test
+name: "CI Workflow"
 on: [push]
 
 jobs:
-  lint:
-    name: "Lint check"
+  test:
+    name: "Run tests against your code (eg: unit tests, style check, complexity check, etc...)."
     runs-on: ubuntu-latest
     steps:
+      - name: "checkout"
+        uses: actions/checkout@v1
       - name: "run linter"
         uses: acreally/pylint-action@master
