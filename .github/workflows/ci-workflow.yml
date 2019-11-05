@@ -12,7 +12,6 @@ jobs:
         uses: acreally/pylint-action@master
       - name: "unit test"
         uses: acreally/pytest-action@master
-      - run: echo $GITHUB_WORKSPACE
       - name: "upload artifacts"
         uses: actions/upload-artifact@master
         with:
