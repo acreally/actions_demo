@@ -12,6 +12,11 @@ jobs:
         uses: acreally/pylint-action@master
       - name: "unit test"
         uses: acreally/pytest-action@master
+      - name: "upload artifacts"
+        uses: actions/upload-artifact@master
+        with:
+          name: test-artifacts
+          path: $GITHUB_WORKSPACE/artifacts
   build:
     if: github.ref == 'refs/heads/master'
     needs: [test]
