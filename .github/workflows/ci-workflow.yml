@@ -4,7 +4,7 @@ on: [push]
 jobs:
   test:
     name: "Run tests against your code (eg: unit tests, style check, complexity check, etc...)."
-    runs-on: ubuntu-latest
+    runs-on: test-runner
     steps:
       - name: "checkout"
         uses: actions/checkout@v1
