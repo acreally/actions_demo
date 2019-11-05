@@ -4,17 +4,21 @@ on: [push]
 jobs:
   test:
     name: "Run tests against your code (eg: unit tests, style check, complexity check, etc...)."
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - name: "checkout"
         uses: actions/checkout@v1
       - name: "lint check"
         uses: acreally/pylint-action@master
+      - name: "Setup python"
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.7
+          architecture: x64
       - name: "unit test"
-        #uses: acreally/pytest-action@master
         run: |
           set -x
-          python3 -m venv ./venv
+          python -m venv ./venv
           source venv/bin/activate
           pip install -r requirements.txt
           mkdir -p artifacts/pytest
