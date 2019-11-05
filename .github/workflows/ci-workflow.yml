@@ -1,5 +1,5 @@
 name: "CI Workflow"
-on: [push]
+on: [push, pull_request]
 
 jobs:
   test:
@@ -12,3 +12,16 @@ jobs:
         uses: acreally/pylint-action@master
       - name: "unit test"
         uses: acreally/pytest-action@master
+  build:
+    if: github.head_ref == 'develop'
+    needs: [test]
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2.7
+    - name: Publish to Registry
+      uses: elgohr/Publish-Docker-Github-Action@master
+      with:
+        name: acreally/actions_demo
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+    
