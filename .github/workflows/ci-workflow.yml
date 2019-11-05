@@ -13,7 +13,7 @@ jobs:
       - name: "unit test"
         uses: acreally/pytest-action@master
   build:
-    if: github.head_ref == 'develop'
+    if: github.head_ref == 'master'
     needs: [test]
     runs-on: ubuntu-latest
     steps:
