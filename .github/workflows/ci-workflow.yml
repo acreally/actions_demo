@@ -19,7 +19,7 @@ jobs:
         run: |
           set -x
           sudo mkdir -p artifacts/pytest
-          pip install -r requirements.txt
+          sudo pip install -r requirements.txt
           sudo pytest --junitxml=artifacts/pytest/junit.xml --cov-report html:artifacts/pytest/ --cov-report xml:artifacts/pytest/coverage.xml --cov=src test
       - name: "upload artifacts"
         uses: actions/upload-artifact@master
