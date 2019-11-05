@@ -14,7 +14,8 @@ jobs:
         #uses: acreally/pytest-action@master
         run: |
           set -x
-          python3.7 -m venv ./venv
+          python --version
+          python -m venv ./venv
           source venv/bin/activate
           pip install -r requirements.txt
           mkdir -p artifacts/pytest
