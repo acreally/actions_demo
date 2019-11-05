@@ -12,6 +12,8 @@ jobs:
         uses: acreally/pylint-action@master
       - name: "unit test"
         uses: acreally/pytest-action@master
+      - name: "echo ref"
+        run: echo "${{GITHUB_REF}}"
   build:
     if: github.ref == 'master'
     needs: [test]
