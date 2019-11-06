@@ -14,13 +14,10 @@ jobs:
         uses: actions/setup-python@v1
         with:
           python-version: 3.7
-          architecture: x64
       - name: "unit test"
         run: |
-          set -x
-          sudo mkdir -p artifacts/pytest
-          sudo pip install -r requirements.txt
-          sudo pytest --junitxml=artifacts/pytest/junit.xml --cov-report html:artifacts/pytest/ --cov-report xml:artifacts/pytest/coverage.xml --cov=src test
+          pip install -r requirements.txt
+          pytest --junitxml=artifacts/pytest/junit.xml --cov-report html:artifacts/pytest/ --cov-report xml:artifacts/pytest/coverage.xml --cov=src test
       - name: "upload artifacts"
         uses: actions/upload-artifact@master
         with:
