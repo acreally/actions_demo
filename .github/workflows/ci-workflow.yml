@@ -8,10 +8,18 @@ jobs:
     steps:
       - name: "checkout"
         uses: actions/checkout@v1
+      - name: "create artifacts directory"
+        run: mkdir artifacts
       - name: "lint check"
         uses: acreally/pylint-action@master
+      - name: "Setup python"
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.7
       - name: "unit test"
-        uses: acreally/pytest-action@master
+        run: |
+          pip install -r requirements.txt
+          pytest --junitxml=artifacts/pytest/junit.xml --cov-report html:artifacts/pytest/ --cov-report xml:artifacts/pytest/coverage.xml --cov=src test
       - name: "upload artifacts"
         uses: actions/upload-artifact@master
         with:
